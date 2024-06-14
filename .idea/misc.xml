@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="ollam_py312" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="ollam_py312" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="rag3.12" project-jdk-type="Python SDK" />
 </project>

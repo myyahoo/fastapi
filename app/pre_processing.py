@@ -3,16 +3,20 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain_community.document_loaders import TextLoader
+from langchain_community import document_loaders
+from langchain_community.document_loaders.web_base import WebBaseLoader
+from langchain_community.document_loaders import PyPDFLoader
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-loader = TextLoader("../data/smile.txt",encoding='UTF8')
+#loader = document_loaders.text.TextLoader("../source_data/smile.txt",encoding='UTF8')
+loader = PyPDFLoader(file_path="../source_data/test.pdf")
 doc = loader.load()
+print(doc[10])
 
-text_split = RecursiveCharacterTextSplitter(chunk_size=100,chunk_overlap=10)
+text_split = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=100)
 
 split = text_split.split_documents(doc)
 

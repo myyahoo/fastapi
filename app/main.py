@@ -1,13 +1,24 @@
 from fastapi import FastAPI
-import RagService
+from pydantic import BaseModel
+from service.rag_service import RagService
+import uvicorn
+
 
 app = FastAPI()
 
 @app.get("/")
 def root():
-    return "test"
+    return "true"
 
 
-@app.get("/rag_chain")
-def rag_chaing():
+class Question(BaseModel):
+    question: str
+
+@app.post("/rag_chain")
+def rag_chain(question:Question):
     rag_service = RagService()
+    response = rag_service.get_chain(question.question)
+    return {"response": response}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="localhost", port=8080)
