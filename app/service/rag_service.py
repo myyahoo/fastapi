@@ -6,7 +6,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.base import RunnableParallel
-from langchain_core.runnables.passthrough import RunnablePassthrough
+from langchain_core.runnables import RunnablePassthrough
 from langchain_openai.chat_models.base import ChatOpenAI
 from langchain_openai.embeddings.base import OpenAIEmbeddings
 from langchain_core.prompts import PromptTemplate
@@ -38,7 +38,7 @@ class RagService:
         Context: {context} 
         Answer:"""
 
-        prompt = PromptTemplate.from_template(template)
+        prompt = ChatPromptTemplate.from_template(template)
         print(prompt)
         #prompt = hub.pull("rlm/rag-prompt")
 

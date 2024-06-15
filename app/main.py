@@ -21,4 +21,4 @@ def rag_chain(question:Question):
     return {"response": response}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8080)
+    uvicorn.run(app, host="localhost", port=8000)
